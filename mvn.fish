@@ -1,4 +1,4 @@
-function mvn
+function mvn --description "Colorize maven output"
   set BOLD (tput bold)
   set UNDERLINE_ON (tput smul)
   set UNDERLINE_OFF (tput rmul)
