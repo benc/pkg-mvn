@@ -1,4 +1,8 @@
 function mvn --description "Colorize maven output"
+  if not available mvn
+    echo "Please install Apache Maven first!"; return 1
+  end
+
   set BOLD (tput bold)
   set UNDERLINE_ON (tput smul)
   set UNDERLINE_OFF (tput rmul)
