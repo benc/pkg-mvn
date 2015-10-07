@@ -3,6 +3,7 @@ function mvn --description "Colorize maven output"
     echo "Please install Apache Maven first!"; return 1
   end
 
+  # tput usage: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x405.html
   set BOLD (tput bold)
   set UNDERLINE_ON (tput smul)
   set UNDERLINE_OFF (tput rmul)
@@ -25,7 +26,8 @@ function mvn --description "Colorize maven output"
   set RESET_FORMATTING (tput sgr0)
 
   command mvn $argv | \
-    sed -e "s/\(\[INFO\]\)\(.*\)/$TEXT_BLUE$BOLD\1$RESET_FORMATTING\2/g" \
+    sed -e "s/\(\[INFO\]\ -.*\)/$BOLD$TEXT_GREEN\1$RESET_FORMATTING/g" \
+      -e "s/\(\[INFO\]\ [^-].*\)/$BOLD$TEXT_WHITE\1$RESET_FORMATTING/g" \
       -e "s/\(\[INFO\]\ BUILD SUCCESSFUL\)/$BOLD$TEXT_GREEN\1$RESET_FORMATTING/g" \
       -e "s/\(\[WARNING\]\)\(.*\)/$BOLD$TEXT_YELLOW\1$RESET_FORMATTING\2/g" \
       -e "s/\(\[ERROR\]\)\(.*\)/$BOLD$TEXT_RED\1$RESET_FORMATTING\2/g" \
