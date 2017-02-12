@@ -1,1 +1,1 @@
-test available mvn
+test type -q mvn

@@ -1,5 +1,5 @@
 function mvn --description "Colorize maven output"
-  if not available mvn
+  if not type -q mvn
     echo "Please install Apache Maven first!"; return 1
   end
 
